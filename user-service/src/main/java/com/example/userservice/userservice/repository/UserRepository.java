@@ -8,5 +8,7 @@ import com.example.userservice.userservice.entity.User;
 
 @Repository
 public interface UserRepository extends MongoRepository<User, Integer> {
+	
+	public User findByFirstName(String name);
 
 }

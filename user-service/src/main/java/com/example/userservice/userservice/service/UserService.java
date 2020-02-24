@@ -11,5 +11,6 @@ public interface UserService {
 	
 	public String saveUser(UserDTO userDto);
 	public List<User> getAllUser();
+	public User getUserByName(String name);
 
 }

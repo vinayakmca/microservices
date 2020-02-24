@@ -45,7 +45,8 @@ public class UserServiceImpl implements UserService {
 		//String encodedPassword = new BCryptPasswordEncoder().encode(userDTO.getLastName());
         user.setLastName(userDto.getLastName());
         user.setCity(userDto.getCity());
-        user.setPassword(userDto.getPassword());
+      String encodedPassword = new BCryptPasswordEncoder().encode(userDto.getPassword());
+        user.setPassword(encodedPassword);
         user.setId(getNextSequence("userSequences"));
 		 userRepository.save(user);
 		userDto.setId(user.getId());
@@ -56,4 +57,11 @@ public class UserServiceImpl implements UserService {
 	public List<User> getAllUser(){
 		return userRepository.findAll();
 	}
+	
+	
+	@Override
+	public User getUserByName(String name){
+		return userRepository.findByFirstName(name);
+	}
+	
 }
